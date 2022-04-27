@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  #a{
+      height: 50px;
+      width: 60%;
+      display: flex;
+      justify-content:space-evenly;
+      margin: auto;
+      background-color:blue;
+
+  }
+  #a>div{
+      
+      background-color: blue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      font-weight: bold;
+  }
+  h1{
+      text-align: center;
+  }
+  a{
+      color:aqua
+  }
+  form{
+    text-align: center;
+  }
+</style>
+<body>
+  <div id="a">
+    <div><a href="frontend.html" >Frontend</a></div>
+    <div><a href="backend.html" >Backend</a></div>
+</div>
+<h1>MASAI  INVESTORS</h1>
+   <form>
+     <input id="a1" type="text" placeholder="name"><br>
+     <input id="b" type="text" placeholder="role"><br>
+     <input id="c" type="text" placeholder="image url"><br>
+     <input id="d" type="text" placeholder="company logo"><br>
+     <input type="submit">
+   </form>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",target)
+    var arr= JSON.parse(localStorage.getItem("Invdata")) || [] 
+    function target(){
+      event.preventDefault()
+    var name =document.querySelector("#a1").value
+    var role=document.querySelector("#b").value
+    var img=document.querySelector("#c").value
+    var logo=document.querySelector("#d").value
+
+    var obj={aname: name,
+             arole: role,  
+             aimg:  img, 
+             alogo: logo} 
+        
+              arr.push(obj)    
+
+    localStorage.setItem("Invdata",JSON.stringify(arr))
+    
+    }
+
+
+</script>

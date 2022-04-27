@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #a{
+        height: 50px;
+        width: 60%;
+        display: flex;
+        justify-content:space-evenly;
+        margin: auto;
+        background-color:blue;
+
+    }
+    #a>div{
+        
+        background-color: blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    h1{
+        text-align: center;
+    }
+    a{
+        color:aqua
+    }
+    #b{
+        height: auto;
+        width:auto ;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #b>div{
+        margin-left: 30px;
+        margin-top: 25px;
+        text-align: center;
+
+    }
+    h4+img{
+        width: 30%;
+        height: 20%;
+        margin-top: -25px;
+    }
+</style>
+<body>
+    <div id="a">
+        <div><a href="frontend.html" >Frontend</a></div>
+        <div><a href="backend.html" >Backend</a></div>
+    </div>
+    <h1>MASAI  INVESTORS</h1>
+    <div id="b">
+          
+    </div>
+</body>
+</html>
+<script>
+     var out= JSON.parse(localStorage.getItem("Invdata"))
+     out.forEach(function(ele){
+         var box=document.createElement("div")
+
+         var out1=document.createElement("img")
+          out1.setAttribute("src",ele.aimg)
+
+         var out2=document.createElement("h2")
+         out2.innerText=ele.aname
+
+         var out3=document.createElement("h4")
+         out3.innerText=ele.arole
+
+         var out4=document.createElement("img")
+         out4.setAttribute("src",ele.alogo)
+
+      box.append(out1,out2,out3,out4)
+    var x=document.querySelector("#b")
+         x.append(box)
+     });
+
+</script>
