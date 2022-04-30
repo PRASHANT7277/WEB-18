@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+      #con{
+          height: 100px;
+          width: 100px;
+          margin: auto;
+          margin-top: 50px;
+          margin-top: 40px;
+      }
+        #box{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            height: 600px;
+            width: 500px;
+            margin: auto;
+            margin-top: -20px;
+            border-radius: 20px;
+        }
+        h2{
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        form{
+            font-size:large
+            
+        } 
+        input{
+            height: 35px;
+            width: 80%;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            border:1px solid gray;
+            padding-left: 10px;
+            margin-left: 7%;
+            margin-top: 10px;
+
+        }
+        label{
+            margin-left: 7%;
+        
+        } 
+        #b{padding:10px 165px 10px 170px;
+            font-size: large;
+            margin:7%;
+            border-radius: 5px;
+            border: 1px solid gray;
+
+        }
+        p{
+            text-align: center;
+            margin-left: 10px;
+            margin-right: 15px;
+        }
+        h3{
+            text-align: center;
+            color: grey;
+            margin-top: -20px;
+        }
+      
+</style>
+<body>
+    <div id="con"><img src="https://sso.masaischool.com/brand_dark.svg"></div>
+    <div id="box">
+             <h2>Sign UP</h2>
+             <label for="nam">Full Name</label><br>
+             <input id="nam" type="text" placeholder="Enter your full name"><br>
+             <label for="email">Email</label><br>
+             <input id="email" type="text"placeholder="Enter email"><br>
+             <label for="pass">Password</label><br>
+             <input id="pass" type="text"placeholder="enter password"><br>
+             <p>By signing up, I accept the Masai School <a href="t.html">Terms of Service</a> and acknowledge the<a href="p.html"> Privacy Policy</a></p>
+             <button id="b">SIGN UP</button>
+             <h3>Already have an account?<a href="signin.html">Sign In</a></h3>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("#b").addEventListener("click",target)
+    function target(){
+      var arr=JSON.parse(localStorage.getItem("data")) || []
+      var obj={name:nam.value,
+               email:email.value,
+                pass:pass.value}
+
+                arr.push(obj)
+                localStorage.setItem("data",JSON.stringify(arr))
+       alert("sign up successfully now go to sign in")
+       console.log(arr)
+    }
+    
+</script>
