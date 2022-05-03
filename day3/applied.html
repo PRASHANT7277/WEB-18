@@ -18,6 +18,24 @@
       <div><a href="bookmark.html">Bookmarks</a></div>
     </div>
 
+    <select id="nsort" onChange="namesort()">
+         <option>sort by name</option>
+         <option value="asc">ascending</option>
+         <option value="des">descending</option>
+    </select>
+
+    <select id="ssort" onChange="salsort()">
+      <option>sort by salary</option>
+      <option value="lth">low to high</option>
+      <option value="htl">high to low</option>
+ </select>
+
+ <select id="fsort" onChange="filsort()">
+  <option value="FSD">FSD</option>
+  <option value="Frontend">frontend</option>
+  <option value="Backend">backend</option>
+</select>
+
     <main>
       <table>
         <thead>
@@ -37,8 +55,78 @@
   </body>
   <script>
     //you need to code here
-   var out=JSON.parse(localStorage.getItem("jobList"))
+    var out=JSON.parse(localStorage.getItem("jobList"))
+   
+    function namesort(){ 
+      var selected=document.querySelector("#nsort").value
+     console.log(selected)
+    if(selected== "asc"){
+     out.sort(function(a,b){
+       var x=a.sname.toUpperCase()
+       var y=b.sname.toUpperCase()
+       if(x>y){
+         return 1
+       }
+       if(x<y){
+         return -1
+       }
+       return 0
+     })
+     display(out)
+   }
+   if (selected== "des"){
+    out.sort(function(a,b){
+      var x=a.sname.toUpperCase()
+       var y=b.sname.toUpperCase()
+       if(x>y){
+         return -1
+       }
+       if(x<y){
+         return 1
+       }
+       return 0
+     })
+     display(out)
+   }
+  }
+    
+  function salsort(){
+    var selected=document.querySelector("#ssort").value
+     console.log(selected)
+     if(selected=="lth"){
+       out.sort(function(a,b){
+         return a.ssalary-b.ssalary
+       })
+       display(out)
+     }
+     if(selected=="htl"){
+       out.sort(function(a,b){
+         return b.ssalary-a.ssalary
+       })
+       display(out)
+     }
+  }
+
+  function filsort(){
+    var selected=document.querySelector("#fsort").value
+   var slist= out.filter(function(elem){
+      return elem.srole == selected
+    })
+     display(slist)
+  }
+     
+
+
+
+
+
+
+
+  display(out)
+
+  function display(out){
    var arr= JSON.parse(localStorage.getItem("Bookmark"))  || []
+   var out1=document.querySelector("tbody").innerHTML=""
    out.forEach(function(elem) {
     var tr=document.createElement("tr")
    var body=document.querySelector("#body")
@@ -65,7 +153,7 @@
    
    });
   
-   
+  }
    
    
    function target(elem){
@@ -73,5 +161,6 @@
   localStorage.setItem("Bookmark",JSON.stringify(arr))
 
    }
+  
   </script>
 </html>
