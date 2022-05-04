@@ -60,10 +60,19 @@
             color: grey;
             margin-top: -10px;
         }
+      #op{
+          height: 80px;
+          width: 200px;
+          font-size: x-large;
+      }
+      h1{
+          color: blue;
+      }
       
 </style>
 <body>
-    <div id="con"><img src="https://sso.masaischool.com/brand_dark.svg"></div>
+    
+    
     <div id="box">
         <h2>Sign In</h2>
         <label for="email">Email</label><br>
@@ -88,15 +97,15 @@
        if(out==null)
         {
             alert("First enter the data")
-            return
+            
         }
        else if(elem.email==email.value && elem.pass==pass.value ){
           alert("sign in successfully")
-         return
+         window.location.href="navbar.html"
       }else
       {
           alert("wrong check the credential again!")
-         return
+         
 
       }
     })

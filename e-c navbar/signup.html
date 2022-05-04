@@ -27,7 +27,10 @@
             padding-top: 20px;
             padding-bottom: 20px;
         }
-        
+        form{
+            font-size:large
+            
+        } 
         input{
             height: 35px;
             width: 80%;
@@ -58,52 +61,38 @@
         h3{
             text-align: center;
             color: grey;
-            margin-top: -10px;
+            margin-top: -20px;
         }
       
 </style>
 <body>
-    <div id="con"><img src="https://sso.masaischool.com/brand_dark.svg"></div>
+    
     <div id="box">
-        <h2>Sign In</h2>
-        <label for="email">Email</label><br>
-        <input id="email" type="text"placeholder="Enter email"><br>
-        <label for="pass">Password</label><br>
-        <input id="pass" type="text"placeholder="enter password"><br>
-        <p>By signing in, I accept the Masai School <a href="t.html">Terms of Service</a> and acknowledge the<a href="p.html"> Privacy Policy</a></p>
-        <button id="b">SIGN IN</button>
-        <h3>Create a new Account !  <a href="signup.html"> Sign Up</a></h3>
+             <h2>Sign UP</h2>
+             <label for="nam">Full Name</label><br>
+             <input id="nam" type="text" placeholder="Enter your full name"><br>
+             <label for="email">Email</label><br>
+             <input id="email" type="text"placeholder="Enter email"><br>
+             <label for="pass">Password</label><br>
+             <input id="pass" type="text"placeholder="enter password"><br>
+             <p>By signing up, I accept the Masai School <a href="t.html">Terms of Service</a> and acknowledge the<a href="p.html"> Privacy Policy</a></p>
+             <button id="b">SIGN UP</button>
+             <h3>Already have an account?<a href="signin.html">Sign In</a></h3>
     </div>
 </body>
 </html>
 <script>
     document.querySelector("#b").addEventListener("click",target)
-    
-  
-    
     function target(){
-        var out= JSON.parse(localStorage.getItem("data")) || []
-        out.forEach(function(elem) {
-            
-       if(out==null)
-        {
-            alert("First enter the data")
-            return
-        }
-       else if(elem.email==email.value && elem.pass==pass.value ){
-          alert("sign in successfully")
-         return
-      }else
-      {
-          alert("wrong check the credential again!")
-         return
+      var arr=JSON.parse(localStorage.getItem("data")) || []
+      var obj={name:nam.value,
+               email:email.value,
+                pass:pass.value}
 
-      }
-    })
-    
-    }    
-        
-      
-    
+                arr.push(obj)
+                localStorage.setItem("data",JSON.stringify(arr))
+       alert("sign up successfully now go to sign in")
+       console.log(arr)
+    }
     
 </script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #box{
+        height: 80px;
+        width: 80%;
+        margin :auto;
+        display: flex;
+    }
+    #box>div:nth-child(1){
+        width: 30%;
+        height: 80px;
+        display:flex ;
+        padding-left: -100px;
+        
+    }
+    #box>div{
+        width: 15%;
+        height: 80px;
+        font-size: 40px;
+        background-color:aqua;
+        display:flex ;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    h1{
+        text-align: center;
+    }
+   #ubox{
+       
+       height:auto;
+       width: 80%;
+       display: flex;
+       margin: auto;
+       flex-wrap: wrap;
+   }
+   #ubox>div{
+       width: 30%;
+       margin-left: auto;
+       margin-bottom: 20px;
+       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   }
+   img{
+       width: 100%;
+   }
+   #cbox{
+       display:flex;
+}
+#cbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+    
+</style>
+<body>
+    <div id="box">
+        <div><a href="navbar.html">Navbar</a></div>
+        <div><a href="mens.html">MENS</a></div>
+        <div><a href="womens.html">WOMENS</a></div>
+        <div><a href="signin.html">login</a></div>
+        <div><a href="signup.html">signup</a></div>
+        <div><a href="cart.html">Cart</a></div> 
+    </div>
+    <h1>My cart</h1>
+    <div id="cbox">
+        <div> Total (in rs) =</div>
+        <div id="fp"> 00 </div>
+    </div>
+    
+    <div id="ubox">
+
+    </div>
+   
+</body>
+</html>
+<script>
+    var icart=JSON.parse(localStorage.getItem("cart"))
+    icart.forEach(function(elem,index) {
+    var card=document.createElement("div")
+    var img=document.createElement("img")
+    img.setAttribute("src",elem.image_url)
+    var a=document.createElement("h3")
+    a.innerText=elem.name
+    var b=document.createElement("h3")
+    b.innerText=elem.price
+    var c=document.createElement("h3")
+    c.innerText=elem.strikedoffprice
+    var d=document.createElement("button")
+    d.innerText="Remove"
+    d.addEventListener("click",function(){
+     rtcart(elem,index)
+          })
+    
+    card.append(img,a,b,c,d)
+          document.querySelector("#ubox").append(card)
+
+    });
+    function rtcart(elem,index){
+      icart.splice(index,1)
+      localStorage.setItem("cart",JSON.stringify(icart))
+      window.location.reload()
+
+    }
+    
+    var price= icart.reduce(function(sum,elem){
+         return sum + +elem.price
+    },0)
+    document.querySelector("#fp").innerText=price
+</script>
